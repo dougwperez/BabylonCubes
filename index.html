@@ -29,6 +29,9 @@
         margin: 0;
         padding: 0;
       }
+      body:hover {
+        cursor: grab;
+      }
 
       #renderCanvas {
         width: 100%;
@@ -117,6 +120,46 @@
         scene.registerBeforeRender(function () {
           pl.position = camera.position;
         });
+
+        //ANIMATION
+        var frameRate = 60;
+
+        //Rotation Animation
+        var yRot = new BABYLON.Animation(
+          "yRot",
+          "rotation.y",
+          frameRate,
+          BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+          BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE
+        );
+
+        var keyFramesR = [];
+
+        keyFramesR.push({
+          frame: 0,
+          value: 0,
+        });
+
+        keyFramesR.push({
+          frame: 2 * frameRate,
+          value: 2 * Math.PI,
+        });
+
+        keyFramesR.push({
+          frame: 5 * frameRate,
+          value: 4 * Math.PI,
+        });
+
+        yRot.setKeys(keyFramesR);
+
+        // var nextAnimation = function() {
+        //     scene.beginDirectAnimation(box, [yRot], 0, 2 * frameRate, true);
+
+        // }
+
+        // scene.beginDirectAnimation(box, [yRot], 0, 2 * frameRate, false, 1, nextAnimation);
+
+        scene.beginDirectAnimation(box, [yRot], 0, 2 * frameRate, true);
 
         return scene;
       };
