@@ -80,7 +80,7 @@
 
         var mat = new BABYLON.StandardMaterial("mat", scene);
         var texture = new BABYLON.Texture(
-          "https://raw.githubusercontent.com/dougwperez/BabylonCubes/main/spritesheetGatsbyTest.png",
+          "https://raw.githubusercontent.com/dougwperez/BabylonCubes/main/FrontEndSpriteSheet2.png",
           scene
         );
         mat.diffuseTexture = texture;
@@ -109,9 +109,10 @@
 
         var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
         box.material = mat;
+        mat.diffuseColor = new BABYLON.Color3(1, 1, 1);
         box.enableEdgesRendering();
-        box.edgesWidth = 4.0;
-        box.edgesColor = new BABYLON.Color4(0, 0, 1, 1);
+        box.edgesWidth = 4.5;
+        box.edgesColor = new BABYLON.Color4(0, 173, 176, 0.5);
 
         scene.registerBeforeRender(function () {
           pl.position = camera.position;
