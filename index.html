@@ -45,6 +45,8 @@
     <canvas id="renderCanvas"></canvas>
     <script>
       var canvas = document.getElementById("renderCanvas");
+      // canvas.removeEventListener("mousewheel", camera._wheel);
+      // canvas.removeEventListener("DOMMouseScroll", camera._wheel);
 
       var engine = null;
       var scene = null;
@@ -71,6 +73,7 @@
         );
         camera.setPosition(new BABYLON.Vector3(0, 4, -12));
         camera.attachControl(canvas, true);
+        camera.lowerRadiusLimit = camera.upperRadiusLimit = camera.radius;
 
         var light = new BABYLON.HemisphericLight(
           "light1",
